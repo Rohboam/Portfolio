@@ -6,7 +6,7 @@ function toggleMenu() {
 }
 
 // Personal access token
-const accessToken = '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'; // Replace with your actual token
+const accessToken = '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'; // Replace with your actual token
 
 // Fetch rate limit information and repositories from GitHub API with authorization
 fetch('https://api.github.com/rate_limit', {
