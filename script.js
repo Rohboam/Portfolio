@@ -5,38 +5,8 @@ function toggleMenu() {
   icon.classList.toggle("open");
 }
 
-// Personal access token
-const accessToken = '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'; // Replace with your actual token
-
-// Fetch rate limit information and repositories from GitHub API with authorization
-fetch('https://api.github.com/rate_limit', {
-  headers: {
-    Authorization: `token ${accessToken}`
-  }
-})
-  .then(response => {
-    // Check if the response is successful
-    if (!response.ok) {
-      throw new Error('Failed to fetch rate limit');
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log(data);
-    // Extract and display relevant rate limit information
-    const rateLimitInfo = data.resources.core;
-    console.log(`Limit: ${rateLimitInfo.limit}`);
-    console.log(`Remaining: ${rateLimitInfo.remaining}`);
-    console.log(`Reset: ${new Date(rateLimitInfo.reset * 1000)}`);
-  })
-  .catch(error => console.error('Error fetching rate limit information:', error));
-
-// Fetch repositories from GitHub API with authorization
-fetch('https://api.github.com/users/Rohboam/repos', {
-  headers: {
-    Authorization: `token ${accessToken}`
-  }
-})
+// Fetch repositories from GitHub API
+fetch('https://api.github.com/users/Rohboam/repos')
   .then(response => {
     // Check if the response is successful
     if (!response.ok) {
