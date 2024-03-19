@@ -5,23 +5,14 @@ function toggleMenu() {
   icon.classList.toggle("open");
 }
 
-// Fetch repositories from GitHub API
 fetch('https://api.github.com/users/Rohboam/repos')
-  .then(response => {
-    // Check if the response is successful
-    if (!response.ok) {
-      throw new Error('Failed to fetch repositories');
-    }
-    return response.json();
-  })
+  .then(response => response.json())
   .then(data => {
     console.log(data);
     // Process the fetched data and display on your website
     displayProjects(data);
   })
   .catch(error => console.error('Error fetching repositories:', error));
-
-
 
 
   async function displayProjects(repositories) {
