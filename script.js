@@ -95,21 +95,14 @@ fetch('https://api.github.com/users/Rohboam/repos')
   }
   
 
-async function getRepoLanguages(languagesUrl) {
-  const accessToken = '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'; // Replace with your actual token
-
-  const response = await fetch(languagesUrl, {
-    headers: {
-      Authorization: `token ${accessToken}`
+  async function getRepoLanguages(languagesUrl) {
+    const response = await fetch(languagesUrl);
+  
+    // Check if the response is successful
+    if (!response.ok) {
+      throw new Error('Failed to fetch languages');
     }
-  });
-
-  // Check if the response is successful
-  if (!response.ok) {
-    throw new Error('Failed to fetch languages');
+  
+    const data = await response.json();
+    return data;
   }
-
-  const data = await response.json();
-  // console.log(data); // Log the response data to understand its structure
-  return data;
-}
